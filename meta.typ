@@ -10,11 +10,11 @@
 #let deadline = datetime.today().display()
 #let city = "Example City"
 
+// file paths for logos etc.
+#let uni_logo_path = "images/logo_placeholder.svg"
+#let institute_logo_path = "images/logo_placeholder.svg"
+
 // formatting settings
 #let citation-style = "ieee"
 #let body-font = "Libertinus Serif"
 #let sans-font = "Libertinus Serif"
-
-// file paths for logos etc.
-#let uni_logo_path = "images/logo_placeholder.svg"
-#let institute_logo_path = "images/logo_placeholder.svg"
