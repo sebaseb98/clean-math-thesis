@@ -1,6 +1,6 @@
 # clean-math-thesis
 
-[![Build Typst Document](https://github.com/sebaseb98/clean-math-thesis/actions/workflows/build.yml/badge.svg)](https://github.com/sebaseb98/MasterThesis/actions/workflows/build.yml)
+[![Build Typst Document](https://github.com/sebaseb98/clean-math-thesis/actions/workflows/build.yml/badge.svg)](https://github.com/sebaseb98/clean-math-thesis/actions/workflows/build.yml)
 [![Repo](https://img.shields.io/badge/GitHub-repo-blue)](https://github.com/sebaseb98/clean-math-thesis)
 [![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)](https://opensource.org/licenses/MIT)
 
