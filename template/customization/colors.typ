@@ -1,3 +1,9 @@
+#let color1 = rgb("#800080")
+#let color2 = rgb("#0000ff")
+#let color3 = rgb("#008002")
+#let color4 = rgb("#ffa500")
+#let color5 = rgb("#ff0000")
+
 #let ugent-blue = rgb(30, 100, 200)
 #let caribbean-current = rgb(30, 100, 101)
 #let proper-purple = rgb("#6f006f")
@@ -6,8 +12,3 @@
 #let atomic-tangerine = rgb(222, 143, 110)
 #let ugent-accent1 = rgb(139, 190, 232)
 #let ugent-accent2 = rgb(137, 137, 137)
-#let color1 = rgb("#800080")
-#let color2 = rgb("#0000ff")
-#let color3 = rgb("#008002")
-#let color4 = rgb("#ffa500")
-#let color5 = rgb("#ff0000")
