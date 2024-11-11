@@ -3,16 +3,37 @@
 #import "@preview/hydra:0.5.1": hydra
 
 //local
-#import "template/meta.typ"
 #import "template/customization/colors.typ": *
 
 #let template(
+
+  // personal/subject related stuff
+  author: "Stuart Dent"
+  title: "My Very Fancy and Good-Looking Thesis About Interesting Stuff"
+  supervisor1: "Prof. Dr. Sue Persmart"
+  supervisor2: "Prof. Dr. Ian Telligent"
+  degree: "Example"
+  program: "Example-Studies"
+  university: "Example University"
+  institute: "Example Institute"
+  deadline: datetime.today().display()
+  city: "Example City"
+
+  // file paths for logos etc.
+  uni_logo_path: "images/logo_placeholder.svg"
+  institute_logo_path: "images/logo_placeholder.svg"
+
+  // formatting settings
+  citation-style: "ieee"
+  body-font: "Libertinus Serif"
+  sans-font: "Libertinus Serif"
+
   body  // the content of the thesis
 ) = {
 // ------------------- settings -------------------
 set heading(numbering: "1.1")  // Heading numbering
 set enum(numbering: "(i)") // Enumerated lists
-set cite(style: meta.citation-style)  // citation style 
+set cite(style: citation-style)  // citation style 
 
 // ------------------- Math equation settings -------------------
 // only labeled equations get a number
@@ -122,38 +143,38 @@ grid(
   grid.cell(
     colspan: 1,
     align: center,
-    image(meta.uni_logo_path, width: 50%),
+    image(uni_logo_path, width: 50%),
   ),
   grid.cell(
     colspan: 1,
     align: center,
-    image(meta.institute_logo_path, width: 50%),
+    image(institute_logo_path, width: 50%),
   ),
   grid.cell(
     colspan: 1,
     align: center,
-    text(font: meta.sans-font, 1.5em, weight: 700, meta.university)
+    text(font: sans-font, 1.5em, weight: 700, university)
   ),
   grid.cell(
     colspan: 1,
     align: center,
-    text(font: meta.sans-font, 1.5em, weight: 700, meta.institute)
+    text(font: sans-font, 1.5em, weight: 700, institute)
   )
 )
 v(4.5cm)
 //title
 line(length: 100%, stroke: color1)
-align(center, text(font: meta.sans-font, 3em, weight: 700, meta.title))
+align(center, text(font: sans-font, 3em, weight: 700, title))
 line(start: (10%,0pt), length: 80%, stroke: color1)
 v(5mm)
 //author
-align(center, text(font: meta.sans-font, 1.5em, weight: 500, meta.degree + " Thesis by " + meta.author))
+align(center, text(font: sans-font, 1.5em, weight: 500, degree + " Thesis by " + author))
 //study program
-align(center, text(font: meta.sans-font, 1.3em, weight: 100, "Study Programme: " + meta.program))
+align(center, text(font: sans-font, 1.3em, weight: 100, "Study Programme: " + program))
 //date
-align(center, text(font: meta.sans-font, 1.3em, weight: 100, meta.deadline))
+align(center, text(font: sans-font, 1.3em, weight: 100, deadline))
 // supervisors
-align(center + bottom, text(font: meta.sans-font, 1.3em, weight: 100, " supervised by" + linebreak() + meta.supervisor1 + linebreak() +  meta.supervisor2))
+align(center + bottom, text(font: sans-font, 1.3em, weight: 100, " supervised by" + linebreak() + supervisor1 + linebreak() +  supervisor2))
 v(-3mm)
 pagebreak()
 
