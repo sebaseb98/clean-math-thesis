@@ -1,5 +1,9 @@
 // local imports
 #import "../meta.typ": author, city, deadline
+#set page(
+  numbering: none,
+  header: none,
+) // turn off the header for the declaration
 
 #heading(level: 2, outlined: false, numbering: none)[Declaration]
 
