@@ -9,4 +9,7 @@
 .vscode/
 .vscode/*
 *.code-workspace
+# Ignore all PDF files
 *.pdf
+# Except template/main.pdf
+!template/main.pdf
