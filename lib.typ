@@ -6,7 +6,6 @@
 #import "template/customization/colors.typ": *
 
 #let template(
-
   // personal/subject related stuff
   author: "Stuart Dent",
   title: "My Very Fancy and Good-Looking Thesis About Interesting Stuff",
@@ -20,15 +19,19 @@
   city: "Example City",
 
   // file paths for logos etc.
-  uni_logo_path: "images/logo_placeholder.svg",
-  institute_logo_path: "images/logo_placeholder.svg",
+  uni_logo: none,
+  institute_logo: none,
 
   // formatting settings
   citation-style: "ieee",
   body-font: "Libertinus Serif",
   sans-font: "Libertinus Serif",
 
-  body  // the content of the thesis
+  // content that needs to be placed differently then normal chapters
+  abstract: none,
+
+  // the content of the thesis
+  body
 ) = {
 // ------------------- settings -------------------
 set heading(numbering: "1.1")  // Heading numbering
@@ -133,40 +136,76 @@ show figure.where(
 ): set figure.caption(position: top)
 
 // ------------------- Cover ------------------- 
-v(5mm)
+v(1fr)
 //logos
-grid(
-  columns: (1fr, 1fr),
-  rows: (auto),
-  column-gutter: 100pt,
-  row-gutter: 7pt,
-  grid.cell(
-    colspan: 1,
-    align: center,
-    image(uni_logo_path, width: 50%),
-  ),
-  grid.cell(
-    colspan: 1,
-    align: center,
-    image(institute_logo_path, width: 50%),
-  ),
-  grid.cell(
-    colspan: 1,
-    align: center,
-    text(font: sans-font, 1.5em, weight: 700, university)
-  ),
-  grid.cell(
-    colspan: 1,
-    align: center,
-    text(font: sans-font, 1.5em, weight: 700, institute)
-  )
-)
-v(4.5cm)
+  if uni_logo != none and institute_logo != none {
+    grid(
+      columns: (1fr, 1fr),
+      rows: (auto),
+      column-gutter: 100pt,
+      row-gutter: 7pt,
+      grid.cell(
+        colspan: 1,
+        align: center,
+        uni_logo,
+      ),
+      grid.cell(
+        colspan: 1,
+        align: center,
+        institute_logo,
+      ),
+      grid.cell(
+        colspan: 1,
+        align: center,
+        text(font: sans-font, 1.5em, weight: 700, university)
+      ),
+      grid.cell(
+        colspan: 1,
+        align: center,
+        text(font: sans-font, 1.5em, weight: 700, institute)
+      )
+    )
+  } else if uni_logo != none {
+    grid(
+      columns: (0.5fr),
+      rows: (auto),
+      column-gutter: 100pt,
+      row-gutter: 7pt,
+      grid.cell(
+        colspan: 1,
+        align: center,
+        uni_logo,
+      ),
+      grid.cell(
+        colspan: 1,
+        align: center,
+        text(font: sans-font, 1.5em, weight: 700, university)
+      )
+    )
+  } else if institute_logo != none {
+    grid(
+      columns: (0.5fr),
+      rows: (auto),
+      column-gutter: 100pt,
+      row-gutter: 7pt,
+      grid.cell(
+        colspan: 1,
+        align: center,
+        institute_logo,
+      ),
+      grid.cell(
+        colspan: 1,
+        align: center,
+        text(font: sans-font, 1.5em, weight: 700, institute)
+      )
+    )
+  }
+v(5fr)
 //title
 line(length: 100%, stroke: color1)
 align(center, text(font: sans-font, 3em, weight: 700, title))
 line(start: (10%,0pt), length: 80%, stroke: color1)
-v(5mm)
+v(5fr)
 //author
 align(center, text(font: sans-font, 1.5em, weight: 500, degree + " Thesis by " + author))
 //study program
@@ -175,10 +214,13 @@ align(center, text(font: sans-font, 1.3em, weight: 100, "Study Programme: " + pr
 align(center, text(font: sans-font, 1.3em, weight: 100, deadline))
 // supervisors
 align(center + bottom, text(font: sans-font, 1.3em, weight: 100, " supervised by" + linebreak() + supervisor1 + linebreak() +  supervisor2))
-v(-3mm)
 pagebreak()
 
-include "chapter/abstract.typ"
+// ------------------- Abstract -------------------
+if abstract != none{
+  abstract
+}
+
 
 set page(
   numbering: "1",
@@ -215,15 +257,6 @@ pagebreak()
 
 
 
-// ------------------- Chapters -------------------
+// ------------------- Content -------------------
 body
-
-bibliography("References.bib")
-pagebreak()
-
-set page(
-  numbering: none,
-  header: none,
-) // turn off the header for the declaration
-include "chapter/declaration.typ"
 }
