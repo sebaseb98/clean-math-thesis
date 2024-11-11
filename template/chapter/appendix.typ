@@ -1,5 +1,5 @@
 #set heading(numbering: none)  // Heading numbering
-= Appendix<chap:Appendix>
+= Appendix
 #counter(heading).update(1)
 
 #set heading(numbering: "A.1", supplement: [Appendix])  // Defines Appendix numbering
