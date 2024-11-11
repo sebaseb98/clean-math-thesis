@@ -8,25 +8,25 @@
 #let template(
 
   // personal/subject related stuff
-  author: "Stuart Dent"
-  title: "My Very Fancy and Good-Looking Thesis About Interesting Stuff"
-  supervisor1: "Prof. Dr. Sue Persmart"
-  supervisor2: "Prof. Dr. Ian Telligent"
-  degree: "Example"
-  program: "Example-Studies"
-  university: "Example University"
-  institute: "Example Institute"
-  deadline: datetime.today().display()
-  city: "Example City"
+  author: "Stuart Dent",
+  title: "My Very Fancy and Good-Looking Thesis About Interesting Stuff",
+  supervisor1: "Prof. Dr. Sue Persmart",
+  supervisor2: "Prof. Dr. Ian Telligent",
+  degree: "Example",
+  program: "Example-Studies",
+  university: "Example University",
+  institute: "Example Institute",
+  deadline: datetime.today().display(),
+  city: "Example City",
 
   // file paths for logos etc.
-  uni_logo_path: "images/logo_placeholder.svg"
-  institute_logo_path: "images/logo_placeholder.svg"
+  uni_logo_path: "images/logo_placeholder.svg",
+  institute_logo_path: "images/logo_placeholder.svg",
 
   // formatting settings
-  citation-style: "ieee"
-  body-font: "Libertinus Serif"
-  sans-font: "Libertinus Serif"
+  citation-style: "ieee",
+  body-font: "Libertinus Serif",
+  sans-font: "Libertinus Serif",
 
   body  // the content of the thesis
 ) = {
