@@ -15,12 +15,17 @@ Additionally, it has headers built with [hydra](https://typst.app/universe/packa
 
 ## Set-Up
 The template is already filled with dummy data, to give users an impression how it looks like. The thesis is obtained by compiling `main.typ`.
-To fit it to your needs
+
+- after [installing Typst](https://github.com/typst/typst?tab=readme-ov-file#installation) you can conveniently use the following to create a new folder containing this project.
+```bash
+typst init @preview/clean-math-thesis:0.1.0
+```
+
 
 - edit the data in `main.typ` $\Rightarrow$ `#show template.with([your data])`
 
 #### Parameters of the Template
-personal/subject related information
+<ins>personal/subject related information</ins>
 - `author`: Name of the author of the thesis.
 - `title`: Title of the thesis.
 - `supervisor1`: Name of the first supervisor.
@@ -32,19 +37,19 @@ personal/subject related information
 - `deadline`: Submission deadline of the thesis.
 - `city`: City where the university is located.
 
-file paths for logos etc.
+<ins>file paths for logos etc.</ins>
 - `uni_logo`: Image, e.g. `image("images/logo_placeholder.svg", width: 50%)`
-- `institute_logo`: Image.
+- `institute_logo`: Image.  
 
-formatting settings
+<ins>formatting settings</ins>
 - `citation-style`: Citation style to be used in the thesis.
 - `body-font`: Font to be used for the body text.
-- `cover-font`: Font to be used for the cover text.
+- `cover-font`: Font to be used for the cover text.  
 
-content that needs to be placed differently then normal chapters
-- `abstract`: Content for the abstract section.
+<ins>content that needs to be placed differently then normal chapters</ins>
+- `abstract`: Content for the abstract section.  
 
-colors
+<ins>colors</ins>
 - `colors`: Color scheme to be used in the thesis. has to be formatted like `(cover-color: rgb("#800080"), heading-color: rgb("#0000ff"))`
 
 
@@ -52,6 +57,19 @@ colors
 - `declaration.typ` should be modified
 - when adding chapters, remember to include them into the `main.typ`.
 - (optional) change colors and appearance of the theorem environment in the `customization/`-folder.
+
+### Use of the template in existing projects
+If you want to change an existing typst project structure to use this template, just type the following lines
+
+```typ
+#import "@preview/clean-math-thesis:0.1.0": template
+
+#show: template.with(
+  // your user specific data, parameters explained above
+)
+
+#include "my_content.typ"  // and eventually more files
+```
 
 
 ### Disclaimer 
