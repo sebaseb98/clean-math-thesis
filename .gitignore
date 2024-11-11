@@ -13,3 +13,6 @@
 *.pdf
 # Except template/main.pdf
 !template/main.pdf
+
+template/.DS_Store
+.DS_Store
