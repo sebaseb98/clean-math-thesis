@@ -1,10 +1,9 @@
 // package imports
-#import "@preview/great-theorems:0.1.1": *
 #import "@preview/lovelace:0.3.0": *
 
 // own imports
-#import "../customization/great-theorems-customization.typ": *
-#import "../customization/colors.typ": *
+#import "../customization/great-theorems-customized.typ": *
+
 
 = Example Chapter <chap:example>
 
