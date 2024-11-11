@@ -27,7 +27,7 @@
   // formatting settings
   citation-style: "ieee",
   body-font: "Libertinus Serif",
-  sans-font: "Libertinus Serif",
+  cover-font: "Libertinus Serif",
 
   // chapters that need special placement
   abstract: include "chapter/abstract.typ",

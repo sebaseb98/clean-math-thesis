@@ -23,7 +23,7 @@
   // formatting settings
   citation-style: "ieee",
   body-font: "Libertinus Serif",
-  sans-font: "Libertinus Serif",
+  cover-font: "Libertinus Serif",
 
   // content that needs to be placed differently then normal chapters
   abstract: none,
@@ -41,7 +41,7 @@ if colors == none {
 // ------------------- settings -------------------
 set heading(numbering: "1.1")  // Heading numbering
 set enum(numbering: "(i)") // Enumerated lists
-set cite(style: citation-style)  // citation style 
+set cite(style: citation-style)  // citation style
 
 // ------------------- Math equation settings -------------------
 // only labeled equations get a number
@@ -140,7 +140,9 @@ show figure.where(
   kind: table
 ): set figure.caption(position: top)
 
-// ------------------- Cover ------------------- 
+// ------------------- Cover -------------------
+set text(font: cover-font)  // cover font
+
 v(1fr)
 //logos
   if uni_logo != none and institute_logo != none {
@@ -162,12 +164,12 @@ v(1fr)
       grid.cell(
         colspan: 1,
         align: center,
-        text(font: sans-font, 1.5em, weight: 700, university)
+        text(1.5em, weight: 700, university)
       ),
       grid.cell(
         colspan: 1,
         align: center,
-        text(font: sans-font, 1.5em, weight: 700, institute)
+        text(1.5em, weight: 700, institute)
       )
     )
   } else if uni_logo != none {
@@ -184,7 +186,7 @@ v(1fr)
       grid.cell(
         colspan: 1,
         align: center,
-        text(font: sans-font, 1.5em, weight: 700, university)
+        text(1.5em, weight: 700, university)
       )
     )
   } else if institute_logo != none {
@@ -201,27 +203,28 @@ v(1fr)
       grid.cell(
         colspan: 1,
         align: center,
-        text(font: sans-font, 1.5em, weight: 700, institute)
+        text(1.5em, weight: 700, institute)
       )
     )
   }
 v(5fr)
 //title
 line(length: 100%, stroke: colors.cover-color)
-align(center, text(font: sans-font, 3em, weight: 700, title))
+align(center, text(3em, weight: 700, title))
 line(start: (10%,0pt), length: 80%, stroke: colors.cover-color)
 v(5fr)
 //author
-align(center, text(font: sans-font, 1.5em, weight: 500, degree + " Thesis by " + author))
+align(center, text(1.5em, weight: 500, degree + " Thesis by " + author))
 //study program
-align(center, text(font: sans-font, 1.3em, weight: 100, "Study Programme: " + program))
+align(center, text(1.3em, weight: 100, "Study Programme: " + program))
 //date
-align(center, text(font: sans-font, 1.3em, weight: 100, deadline))
+align(center, text(1.3em, weight: 100, deadline))
 // supervisors
-align(center + bottom, text(font: sans-font, 1.3em, weight: 100, " supervised by" + linebreak() + supervisor1 + linebreak() +  supervisor2))
+align(center + bottom, text(1.3em, weight: 100, " supervised by" + linebreak() + supervisor1 + linebreak() +  supervisor2))
 pagebreak()
 
 // ------------------- Abstract -------------------
+set text(font: body-font)  // body font
 if abstract != none{
   abstract
 }
