@@ -3,10 +3,9 @@
 #import "@preview/hydra:0.5.1": hydra
 //#import "@local/clean-math-thesis:0.1.0": template
 
-//local
-#import "meta.typ"
+//local 
 #import "customization/colors.typ": *
-#import "../lib.typ": template
+#import "../lib.typ": template //TODO: delete this
 
 #show: template.with(
   // personal/subject related stuff
@@ -30,8 +29,11 @@
   body-font: "Libertinus Serif",
   sans-font: "Libertinus Serif",
 
-  // chapters that need special palcement
+  // chapters that need special placement
   abstract: include "chapter/abstract.typ",
+
+  // colors
+  colors: (cover-color: color1, heading-color: color2),
 )
 
 // ------------------- content -------------------

@@ -1,9 +1,7 @@
 // global
-#import "@preview/great-theorems:0.1.1": *
+#import "@preview/great-theorems:0.1.1": great-theorems-init
 #import "@preview/hydra:0.5.1": hydra
 
-//local
-#import "template/customization/colors.typ": *
 
 #let template(
   // personal/subject related stuff
@@ -30,9 +28,16 @@
   // content that needs to be placed differently then normal chapters
   abstract: none,
 
+  // colors
+  colors: none, 
+
   // the content of the thesis
   body
 ) = {
+// ------------------- colors -------------------
+if colors == none {
+  colors = (cover-color: rgb("#800080"), heading-color: rgb("#0000ff"))
+}
 // ------------------- settings -------------------
 set heading(numbering: "1.1")  // Heading numbering
 set enum(numbering: "(i)") // Enumerated lists
@@ -70,29 +75,29 @@ show heading.where(
   if it.numbering != none{
   block(width: 100%)[
 
-  #line(length: 100%, stroke: 0.6pt + color2)
+  #line(length: 100%, stroke: 0.6pt + colors.heading-color)
   #v(0.1cm)
   #set align(left)
   #set text(22pt)
-  #text(color2)[Chapter
+  #text(colors.heading-color)[Chapter
   #counter(heading).display(
     "1:" + it.numbering
   )]
 
   #it.body
   #v(-0.5cm)
-  #line(length: 100%, stroke: 0.6pt + color2)
+  #line(length: 100%, stroke: 0.6pt + colors.heading-color)
 ]  
   }
   else{
     block(width: 100%)[
-      #line(length: 100%, stroke: 0.6pt + color2)
+      #line(length: 100%, stroke: 0.6pt + colors.heading-color)
       #v(0.1cm)
       #set align(left)
       #set text(22pt)
       #it.body
       #v(-0.5cm)
-      #line(length: 100%, stroke: 0.6pt + color2)
+      #line(length: 100%, stroke: 0.6pt + colors.heading-color)
     ]
   }
 }
@@ -202,9 +207,9 @@ v(1fr)
   }
 v(5fr)
 //title
-line(length: 100%, stroke: color1)
+line(length: 100%, stroke: colors.cover-color)
 align(center, text(font: sans-font, 3em, weight: 700, title))
-line(start: (10%,0pt), length: 80%, stroke: color1)
+line(start: (10%,0pt), length: 80%, stroke: colors.cover-color)
 v(5fr)
 //author
 align(center, text(font: sans-font, 1.5em, weight: 500, degree + " Thesis by " + author))
