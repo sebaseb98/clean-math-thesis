@@ -1,6 +1,7 @@
 // global
 #import "@preview/great-theorems:0.1.1": great-theorems-init
 #import "@preview/hydra:0.5.1": hydra
+#import "@preview/equate:0.2.1": equate
 
 
 #let template(
@@ -29,7 +30,10 @@
   abstract: none,
 
   // colors
-  colors: none, 
+  colors: none,
+
+  // equate settings
+  equate-settings: (breakable: true, sub-numbering: true, number-mode: "label"),
 
   // the content of the thesis
   body
@@ -45,24 +49,8 @@ set cite(style: citation-style)  // citation style
 
 // ------------------- Math equation settings -------------------
 // only labeled equations get a number
-show math.equation:it => {
-  if it.has("label"){
-    math.equation(block:true, numbering: "(1)", it)
-  } else {
-    it
-  }
-}
-show ref: it => {
-  let el = it.element
-  if el != none and el.func() == math.equation {
-    link(el.location(), numbering(
-      "(1)",
-      counter(math.equation).at(el.location()).at(0) + 1
-    ))
-  } else {
-    it
-  }
-}
+show: equate.with(..equate-settings)
+set math.equation(numbering: "(1.1)")
 show math.equation: box  // no line breaks in inline math
 show: great-theorems-init  // show rules for theorems
 
