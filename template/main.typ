@@ -31,7 +31,7 @@
   // chapters that need special placement
   abstract: include "chapter/abstract.typ",
 
-  // equate settings
+  // equation settings
   equate-settings: (breakable: true, sub-numbering: true, number-mode: "label"),
 
   // colors

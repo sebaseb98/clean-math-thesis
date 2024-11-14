@@ -32,8 +32,8 @@
   // colors
   colors: none,
 
-  // equate settings
-  equate-settings: (breakable: true, sub-numbering: true, number-mode: "label"),
+  // equation settings
+  equate-settings: none,
 
   // the content of the thesis
   body
@@ -48,9 +48,29 @@ set enum(numbering: "(i)") // Enumerated lists
 set cite(style: citation-style)  // citation style
 
 // ------------------- Math equation settings -------------------
+
+set math.equation(numbering: "(1.1)") if equate-settings != none
 // only labeled equations get a number
-show: equate.with(..equate-settings)
-set math.equation(numbering: "(1.1)")
+show math.equation:it => {
+  if equate-settings != none {
+    equate(..equate-settings, it)
+  } else if it.has("label"){
+    math.equation(block:true, numbering: "(1)", it)
+  } else {
+    it
+  }
+}
+show ref: it => {
+  let el = it.element
+  if equate-settings==none and el != none and el.func() == math.equation {
+    link(el.location(), numbering(
+      "(1)",
+      counter(math.equation).at(el.location()).at(0) + 1
+    ))
+  } else if equate-settings==none {
+    it
+  }
+}
 show math.equation: box  // no line breaks in inline math
 show: great-theorems-init  // show rules for theorems
 

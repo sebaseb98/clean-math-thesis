@@ -8,7 +8,7 @@
 Of course, it can also be used for other subjects, but the following math-specific features are already contained in the template:
 
 - theorems, lemmas, corollaries, proofs etc.  prepared using [great-theorems](https://typst.app/universe/package/great-theorems)
-- equation settings using [equate](https://typst.app/universe/package/equate)
+- equation settings (optionally using [equate](https://typst.app/universe/package/equate))
 - pseudocode package [lovelace](https://typst.app/universe/package/lovelace) included.
 
 Additionally, it has headers built with [hydra](https://typst.app/universe/package/hydra).
@@ -48,8 +48,8 @@ typst init @preview/clean-math-thesis:0.1.0
 <ins>content that needs to be placed differently then normal chapters</ins>
 - `abstract`: Content for the abstract section. 
 
-<ins>equate settings</ins>
-- `equate-settings`: tuple with the settings for the equations (see [docs](https://typst.app/universe/package/equate)), e.g. (breakable: true, sub-numbering: true, number-mode: "label")
+<ins>equation settings</ins>
+- `equate-settings`: either none -> no equate use; or tuple with the settings for the equations (see [docs](https://typst.app/universe/package/equate)), e.g. (breakable: true, sub-numbering: true, number-mode: "label")
 
 <ins>colors</ins>
 - `colors`: Color scheme to be used in the thesis. has to be formatted like `(cover-color: rgb("#800080"), heading-color: rgb("#0000ff"))`
