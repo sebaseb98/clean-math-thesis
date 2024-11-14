@@ -14,7 +14,7 @@
   university: "Example University",
   institute: "Example Institute",
   deadline: datetime.today().display(),
-  city: "Example City",
+
 
   // file paths for logos etc.
   uni-logo: none,

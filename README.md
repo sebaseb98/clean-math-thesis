@@ -35,7 +35,6 @@ typst init @preview/clean-math-thesis:0.1.0
 - `university`: Name of the university.
 - `institute`: Name of the institute.
 - `deadline`: Submission deadline of the thesis.
-- `city`: City where the university is located.
 
 <ins>file paths for logos etc.</ins>
 - `uni_logo`: Image, e.g. `image("images/logo_placeholder.svg", width: 50%)`
