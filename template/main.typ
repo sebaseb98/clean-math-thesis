@@ -1,7 +1,5 @@
 // global
-#import "@preview/great-theorems:0.1.1": *
-#import "@preview/hydra:0.5.1": hydra
-#import "@preview/clean-math-thesis:0.1.0": template
+#import "@preview/clean-math-thesis:0.1.1": template
 
 //local 
 #import "customization/colors.typ": *
