@@ -22,7 +22,6 @@
   institute-logo: image("images/logo_placeholder.svg", width: 50%),
 
   // formatting settings
-  citation-style: "ieee",
   body-font: "Libertinus Serif",
   cover-font: "Libertinus Serif",
 

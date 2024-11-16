@@ -23,7 +23,6 @@
   institute-logo: none,
 
   // formatting settings
-  citation-style: "ieee",
   body-font: "Libertinus Serif",
   cover-font: "Libertinus Serif",
 
@@ -42,7 +41,6 @@
 // ------------------- settings -------------------
 set heading(numbering: "1.1")  // Heading numbering
 set enum(numbering: "(i)") // Enumerated lists
-set cite(style: citation-style)  // citation style
 
 // ------------------- Math equation settings -------------------
 
