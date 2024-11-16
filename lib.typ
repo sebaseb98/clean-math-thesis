@@ -31,7 +31,7 @@
   abstract: none,
 
   // colors
-  colors: none,
+  colors: (cover-color: rgb("#800080"), heading-color: rgb("#0000ff")),
 
   // equation settings
   equate-settings: none,
@@ -39,10 +39,6 @@
   // the content of the thesis
   body
 ) = {
-// ------------------- colors -------------------
-if colors == none {
-  colors = (cover-color: rgb("#800080"), heading-color: rgb("#0000ff"))
-}
 // ------------------- settings -------------------
 set heading(numbering: "1.1")  // Heading numbering
 set enum(numbering: "(i)") // Enumerated lists
