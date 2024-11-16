@@ -1,7 +1,7 @@
 // global
-#import "@preview/clean-math-thesis:0.1.1": template
+#import "../lib.typ": template
 
-//local 
+//local
 #import "customization/colors.typ": *
 
 
@@ -39,7 +39,7 @@
 // ------------------- content -------------------
 #include "chapter/introduction.typ"
 #pagebreak()
-#include "chapter/example_chapter.typ"
+#include "chapter/dummy_chapter.typ"
 #pagebreak()
 #include "chapter/conclusions_outlook.typ"
 #pagebreak()
