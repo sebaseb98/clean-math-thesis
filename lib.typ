@@ -15,6 +15,7 @@
   university: "Example University",
   institute: "Example Institute",
   deadline: datetime.today().display(),
+  city: "Example City",
 
 
   // file paths for logos etc.
@@ -75,7 +76,7 @@ show math.equation: box  // no line breaks in inline math
 show: great-theorems-init  // show rules for theorems
 
 
-// ------------------- Settings for Chapter headings ------------------- 
+// ------------------- Settings for Chapter headings -------------------
 show heading.where(level: 1): set heading(supplement: [Chapter])
 show heading.where(
   level: 1,
@@ -95,7 +96,7 @@ show heading.where(
   #it.body
   #v(-0.5cm)
   #line(length: 100%, stroke: 0.6pt + colors.heading-color)
-]  
+]
   }
   else{
     block(width: 100%)[
@@ -123,7 +124,7 @@ show heading.where(
 show heading.where(
   level: 4
 ): it => {
-  it.body 
+  it.body
   linebreak()
 }
 // same for level 5 headings
@@ -226,7 +227,11 @@ align(center, text(1.5em, weight: 500, degree + " Thesis by " + author))
 //study program
 align(center, text(1.3em, weight: 100, "Study Programme: " + program))
 //date
-align(center, text(1.3em, weight: 100, deadline))
+let deadline-text = deadline
+if city != none {
+  deadline-text = city + ", " + deadline
+}
+align(center, text(1.3em, weight: 100, deadline-text))
 // supervisors
 align(center + bottom, text(1.3em, weight: 100, " supervised by" + linebreak() + supervisor1 + linebreak() +  supervisor2))
 pagebreak()
@@ -243,12 +248,12 @@ set page(
   number-align: center,
   header: context {
     align(center, emph(hydra(1)))
-    v(0.2cm)  
+    v(0.2cm)
   },
 )  // Page numbering after cover & abstract => they have no page number
 pagebreak()
 
-// ------------------- Tables of ... ------------------- 
+// ------------------- Tables of ... -------------------
 
 // Table of contents
 outline(depth: 3, indent: 1em, fill: line(length: 100%, stroke: (thickness: 1pt, dash: "loosely-dotted")))
@@ -266,7 +271,7 @@ pagebreak()
 // List of Tables
 outline(
   title: [List of Tables],
-  target: figure.where(kind: table), 
+  target: figure.where(kind: table),
   fill: line(length: 100%, stroke: (thickness: 1pt, dash: "loosely-dotted"))
 )
 pagebreak()
