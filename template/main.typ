@@ -1,5 +1,5 @@
 // global
-#import "../lib.typ": template
+#import "@preview/clean-math-thesis:0.1.1": template
 
 //local
 #import "customization/colors.typ": *
