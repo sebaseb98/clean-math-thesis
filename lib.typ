@@ -229,6 +229,8 @@ align(center, text(1.5em, weight: 500, degree + " Thesis by " + author))
 if program != none {
   align(center, text(1.3em, weight: 100, "Study Programme: " + program))
 }
+//university
+align(center, text(1.3em, weight: 100, university + ", " + institute))
 //date
 let deadline-text = deadline
 if city != none {
