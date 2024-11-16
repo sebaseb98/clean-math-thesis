@@ -221,12 +221,14 @@ v(5fr)
 //title
 line(length: 100%, stroke: colors.cover-color)
 align(center, text(3em, weight: 700, title))
-line(start: (10%,0pt), length: 80%, stroke: colors.cover-color)
+line(start: (10%, 0pt), length: 80%, stroke: colors.cover-color)
 v(5fr)
 //author
 align(center, text(1.5em, weight: 500, degree + " Thesis by " + author))
 //study program
-align(center, text(1.3em, weight: 100, "Study Programme: " + program))
+if program != none {
+  align(center, text(1.3em, weight: 100, "Study Programme: " + program))
+}
 //date
 let deadline-text = deadline
 if city != none {
