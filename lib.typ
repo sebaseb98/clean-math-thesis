@@ -74,7 +74,7 @@ show: great-theorems-init  // show rules for theorems
 show heading.where(level: 1): set heading(supplement: [Chapter])
 show heading.where(
   level: 1,
-): it =>{
+): it => {
   if it.numbering != none{
   block(width: 100%)[
 
@@ -103,6 +103,13 @@ show heading.where(
       #line(length: 100%, stroke: 0.6pt + colors.heading-color)
     ]
   }
+}
+// Automatically insert a page break before each chapter
+show heading.where(
+  level: 1
+): it => {
+  pagebreak(weak: true)
+  it
 }
 // only valid for abstract and declaration
 show heading.where(

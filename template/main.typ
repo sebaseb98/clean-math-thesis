@@ -37,17 +37,12 @@
 
 // ------------------- content -------------------
 #include "chapter/introduction.typ"
-#pagebreak()
 #include "chapter/dummy_chapter.typ"
-#pagebreak()
 #include "chapter/conclusions_outlook.typ"
-#pagebreak()
 #include "chapter/appendix.typ"
-#pagebreak()
 
 // ------------------- bibliography -------------------
 #bibliography("References.bib")
-#pagebreak()
 
 // ------------------- declaration -------------------
 #include "chapter/declaration.typ"
