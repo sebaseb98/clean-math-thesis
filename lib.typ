@@ -62,7 +62,7 @@ show ref: it => {
       "(1)",
       counter(math.equation).at(el.location()).at(0) + 1
     ))
-  } else if equate-settings==none {
+  } else {
     it
   }
 }
