@@ -47,7 +47,7 @@ set enum(numbering: "(i)") // Enumerated lists
 
 set math.equation(numbering: numbering-pattern) if equate-settings != none
 // only labeled equations get a number
-show math.equation:it => {
+show math.equation: it => {
   if equate-settings != none {
     equate(..equate-settings, it)
   } else if it.has("label"){
@@ -58,7 +58,7 @@ show math.equation:it => {
 }
 show ref: it => {
   let el = it.element
-  if equate-settings==none and el != none and el.func() == math.equation {
+  if equate-settings == none and el != none and el.func() == math.equation {
     link(el.location(), numbering(
       "(1)",
       counter(math.equation).at(el.location()).at(0) + 1
