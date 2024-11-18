@@ -50,6 +50,7 @@ typst init @preview/clean-math-thesis:0.1.0
 
 <ins>equation settings</ins>
 - `equate-settings`: either none -> no equate use; or tuple with the settings for the equations (see [docs](https://typst.app/universe/package/equate)), e.g. (breakable: true, sub-numbering: true, number-mode: "label")
+- `numbering-pattern`: specify the [numbering](https://typst.app/docs/reference/model/numbering/#parameters-numbering) of the equations. The second counting symbol (e.g. the "a" in "(1.a)") is only used when equate and subnumbering are activated, otherwise it's ignored
 
 <ins>colors</ins>
 - `colors`: Color scheme to be used in the thesis. has to be formatted like `(cover-color: rgb("#800080"), heading-color: rgb("#0000ff"))`
