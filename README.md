@@ -22,7 +22,7 @@ typst init @preview/clean-math-thesis:0.1.0
 ```
 
 
-- edit the data in `main.typ` $\Rightarrow$ `#show template.with([your data])`
+- edit the data in `main.typ` → `#show template.with([your data])`
 
 #### Parameters of the Template
 <ins>personal/subject related information</ins>
@@ -76,11 +76,11 @@ If you want to change an existing typst project structure to use this template, 
 
 
 ### Disclaimer 
-This template was created after I finished my master's thesis.  
-I do not guarantee that it will be accepted by any university, please clarify in advance if it fulfills all requirements. If not, this template might still be a good starting point.
+This template was created after Sebastian finished his master's thesis.  
+We do not guarantee that it will be accepted by any university, please clarify in advance if it fulfills all requirements. If not, this template might still be a good starting point.
 
 ### Acknowledgements
-As inspiration on how to structure this template, I used the [modern-unito-thesis](https://typst.app/universe/package/modern-unito-thesis) template. The design is inspired by the [fau-book](https://github.com/FAU-AMMN/fau-book) template.
+As inspiration on how to structure this template, We used the [modern-unito-thesis](https://typst.app/universe/package/modern-unito-thesis) template. The design is inspired by the [fau-book](https://github.com/FAU-AMMN/fau-book) template.
 
 ### Feedback & Improvements
-If you encounter problems, please open issues. In case you found useful extensions or improved anything I am also very happy to accept pull requests.
+If you encounter problems, please open issues. In case you found useful extensions or improved anything We are also very happy to accept pull requests.
