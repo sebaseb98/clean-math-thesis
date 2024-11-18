@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+
       - name: Typst
         uses: lvignoli/typst-action@main
         with:
@@ -20,7 +20,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: PDFs
-          path: main.pdf
+          path: template/main.pdf
 
       - name: Get current date
         id: date

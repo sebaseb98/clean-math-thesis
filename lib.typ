@@ -15,6 +15,7 @@
   university: "Example University",
   institute: "Example Institute",
   deadline: datetime.today().display(),
+  city: "Example City",
 
 
   // file paths for logos etc.
@@ -22,7 +23,6 @@
   institute-logo: none,
 
   // formatting settings
-  citation-style: "ieee",
   body-font: "Libertinus Serif",
   cover-font: "Libertinus Serif",
 
@@ -30,7 +30,7 @@
   abstract: none,
 
   // colors
-  colors: none,
+  colors: (cover-color: rgb("#800080"), heading-color: rgb("#0000ff")),
 
   // equation settings
   equate-settings: none,
@@ -38,14 +38,9 @@
   // the content of the thesis
   body
 ) = {
-// ------------------- colors -------------------
-if colors == none {
-  colors = (cover-color: rgb("#800080"), heading-color: rgb("#0000ff"))
-}
 // ------------------- settings -------------------
 set heading(numbering: "1.1")  // Heading numbering
 set enum(numbering: "(i)") // Enumerated lists
-set cite(style: citation-style)  // citation style
 
 // ------------------- Math equation settings -------------------
 
@@ -75,11 +70,11 @@ show math.equation: box  // no line breaks in inline math
 show: great-theorems-init  // show rules for theorems
 
 
-// ------------------- Settings for Chapter headings ------------------- 
+// ------------------- Settings for Chapter headings -------------------
 show heading.where(level: 1): set heading(supplement: [Chapter])
 show heading.where(
   level: 1,
-): it =>{
+): it => {
   if it.numbering != none{
   block(width: 100%)[
 
@@ -95,7 +90,7 @@ show heading.where(
   #it.body
   #v(-0.5cm)
   #line(length: 100%, stroke: 0.6pt + colors.heading-color)
-]  
+]
   }
   else{
     block(width: 100%)[
@@ -108,6 +103,13 @@ show heading.where(
       #line(length: 100%, stroke: 0.6pt + colors.heading-color)
     ]
   }
+}
+// Automatically insert a page break before each chapter
+show heading.where(
+  level: 1
+): it => {
+  pagebreak(weak: true)
+  it
 }
 // only valid for abstract and declaration
 show heading.where(
@@ -123,7 +125,7 @@ show heading.where(
 show heading.where(
   level: 4
 ): it => {
-  it.body 
+  it.body
   linebreak()
 }
 // same for level 5 headings
@@ -219,14 +221,22 @@ v(5fr)
 //title
 line(length: 100%, stroke: colors.cover-color)
 align(center, text(3em, weight: 700, title))
-line(start: (10%,0pt), length: 80%, stroke: colors.cover-color)
+line(start: (10%, 0pt), length: 80%, stroke: colors.cover-color)
 v(5fr)
 //author
 align(center, text(1.5em, weight: 500, degree + " Thesis by " + author))
 //study program
-align(center, text(1.3em, weight: 100, "Study Programme: " + program))
+if program != none {
+  align(center, text(1.3em, weight: 100, "Study Programme: " + program))
+}
+//university
+align(center, text(1.3em, weight: 100, university + ", " + institute))
 //date
-align(center, text(1.3em, weight: 100, deadline))
+let deadline-text = deadline
+if city != none {
+  deadline-text = city + ", " + deadline
+}
+align(center, text(1.3em, weight: 100, deadline-text))
 // supervisors
 align(center + bottom, text(1.3em, weight: 100, " supervised by" + linebreak() + supervisor1 + linebreak() +  supervisor2))
 pagebreak()
@@ -243,12 +253,12 @@ set page(
   number-align: center,
   header: context {
     align(center, emph(hydra(1)))
-    v(0.2cm)  
+    v(0.2cm)
   },
 )  // Page numbering after cover & abstract => they have no page number
 pagebreak()
 
-// ------------------- Tables of ... ------------------- 
+// ------------------- Tables of ... -------------------
 
 // Table of contents
 outline(depth: 3, indent: 1em, fill: line(length: 100%, stroke: (thickness: 1pt, dash: "loosely-dotted")))
@@ -266,7 +276,7 @@ pagebreak()
 // List of Tables
 outline(
   title: [List of Tables],
-  target: figure.where(kind: table), 
+  target: figure.where(kind: table),
   fill: line(length: 100%, stroke: (thickness: 1pt, dash: "loosely-dotted"))
 )
 pagebreak()

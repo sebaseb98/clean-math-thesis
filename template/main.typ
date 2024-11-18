@@ -1,7 +1,7 @@
 // global
-#import "@preview/clean-math-thesis:0.1.1": template
+#import "@preview/clean-math-thesis:0.2.0": template
 
-//local 
+//local
 #import "customization/colors.typ": *
 
 
@@ -22,7 +22,6 @@
   institute-logo: image("images/logo_placeholder.svg", width: 50%),
 
   // formatting settings
-  citation-style: "ieee",
   body-font: "Libertinus Serif",
   cover-font: "Libertinus Serif",
 
@@ -38,17 +37,12 @@
 
 // ------------------- content -------------------
 #include "chapter/introduction.typ"
-#pagebreak()
-#include "chapter/example_chapter.typ"
-#pagebreak()
+#include "chapter/dummy_chapter.typ"
 #include "chapter/conclusions_outlook.typ"
-#pagebreak()
 #include "chapter/appendix.typ"
-#pagebreak()
 
 // ------------------- bibliography -------------------
 #bibliography("References.bib")
-#pagebreak()
 
 // ------------------- declaration -------------------
 #include "chapter/declaration.typ"
