@@ -26,7 +26,7 @@ Example definition in @def:Example. This and all the following are examples usin
   $
   e ^a = sum_(k=0)^oo a^k/k!.
   $
-]<ex:Fourier_Gaussian>
+]
 
 #theorem[
   The number $e$ is irrational
@@ -45,7 +45,7 @@ Example definition in @def:Example. This and all the following are examples usin
 #proof[
   Trivial, but the proof is not done yet.
 
-  To demonstrate the breaking behaviour we add another
+  To demonstrate the breaking behavior we add another
 
   #lorem(150)
 ]
