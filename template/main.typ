@@ -1,5 +1,5 @@
 // global
-#import "@preview/clean-math-thesis:0.2.0": template
+#import "../lib.typ": template
 
 //local
 #import "customization/colors.typ": *
@@ -33,7 +33,9 @@
   numbering-pattern: "(1.1)",
 
   // colors
-  colors: (cover-color: color1, heading-color: color2),
+  cover-color: color1,
+  heading-color: color2,
+  link-color: color3
 )
 
 // ------------------- content -------------------
