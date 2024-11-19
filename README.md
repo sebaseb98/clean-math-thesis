@@ -82,7 +82,7 @@ This template was created after Sebastian finished his master's thesis.
 We do not guarantee that it will be accepted by any university, please clarify in advance if it fulfills all requirements. If not, this template might still be a good starting point.
 
 ## Acknowledgements
-As inspiration on how to structure this template, We used the [modern-unito-thesis](https://typst.app/universe/package/modern-unito-thesis) template. The design is inspired by the [fau-book](https://github.com/FAU-AMMN/fau-book) template.
+As inspiration on how to structure this template, we used the [modern-unito-thesis](https://typst.app/universe/package/modern-unito-thesis) template. The design is inspired by the [fau-book](https://github.com/FAU-AMMN/fau-book) template.
 
 ## Feedback & Improvements
 If you encounter problems, please open issues. In case you found useful extensions or improved anything We are also very happy to accept pull requests.
