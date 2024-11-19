@@ -2,8 +2,9 @@
 #import "@preview/great-theorems:0.1.1": great-theorems-init
 #import "@preview/hydra:0.5.1": hydra
 #import "@preview/equate:0.2.1": equate
+#import "@preview/headcount:0.1.0": reset-counter
 
-
+#let mathcounter = counter("mathblocks")  // counter for mathblocks
 #let template(
   // personal/subject related stuff
   author: "Stuart Dent",
@@ -105,6 +106,7 @@ show heading.where(
     ]
   }
 }
+show heading: reset-counter(mathcounter, levels: 1)
 // Automatically insert a page break before each chapter
 show heading.where(
   level: 1
