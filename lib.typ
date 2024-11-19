@@ -106,7 +106,6 @@ show heading.where(
     ]
   }
 }
-show heading: reset-counter(mathcounter, levels: 1)
 // Automatically insert a page break before each chapter
 show heading.where(
   level: 1
@@ -139,6 +138,7 @@ show heading.where(
   linebreak()
 }
 
+show heading: reset-counter(mathcounter, levels: 1)
 // ------------------- other settings -------------------
 // Settings for Chapter in the outline
 show outline.entry.where(
