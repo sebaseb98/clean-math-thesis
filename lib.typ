@@ -2,8 +2,9 @@
 #import "@preview/great-theorems:0.1.1": great-theorems-init
 #import "@preview/hydra:0.5.1": hydra
 #import "@preview/equate:0.2.1": equate
+#import "@preview/headcount:0.1.0": reset-counter
 
-
+#let mathcounter = counter("mathblocks")  // counter for mathblocks
 #let template(
   // personal/subject related stuff
   author: "Stuart Dent",
@@ -137,6 +138,7 @@ show heading.where(
   linebreak()
 }
 
+show heading: reset-counter(mathcounter, levels: 1)
 // ------------------- other settings -------------------
 // Settings for Chapter in the outline
 show outline.entry.where(

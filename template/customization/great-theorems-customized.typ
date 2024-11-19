@@ -1,11 +1,11 @@
 // packages
+#import "@preview/clean-math-thesis:0.2.0": mathcounter
 #import "@preview/great-theorems:0.1.1": *
 #import "@preview/headcount:0.1.0": *
 
 // local
 #import "colors.typ": *
 
-#let mathcounter = counter("mathblocks")  // counter for mathblocks
 #let my_mathblock = mathblock.with(
   radius: 0.3em,
   inset: 0.8em,
