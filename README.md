@@ -59,6 +59,7 @@ typst init @preview/clean-math-thesis:0.2.0
 
 
 ### Other Customizations
+- `declaration.typ` should be modified
 - when adding chapters, remember to include them into the `main.typ`.
 - (optional) change colors and appearance of the theorem environment in the `customization/`-folder.
 
