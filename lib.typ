@@ -31,7 +31,9 @@
   abstract: none,
 
   // colors
-  colors: (cover-color: rgb("#800080"), heading-color: rgb("#0000ff")),
+  cover-color: rgb("#800080"), 
+  heading-color: rgb("#0000ff"),
+  link-color: rgb("#000000"),
 
   // equation settings
   equate-settings: none,
@@ -46,7 +48,7 @@ set enum(numbering: "(i)") // Enumerated lists
 
 // ------------------- Math equation settings -------------------
 
-set math.equation(numbering: numbering-pattern) if equate-settings != none
+set math.equation(numbering: numbering-pattern, supplement: none) if equate-settings != none
 // only labeled equations get a number
 show math.equation: it => {
   if equate-settings != none {
@@ -59,10 +61,10 @@ show math.equation: it => {
 }
 show ref: it => {
   let el = it.element
-  if equate-settings == none and el != none and el.func() == math.equation {
+  if el != none and el.func() == math.equation {
     link(el.location(), numbering(
       "(1)",
-      counter(math.equation).at(el.location()).at(0) + 1
+      counter(math.equation).at(el.location()).at(0) + int(equate-settings==none)
     ))
   } else {
     it
@@ -80,29 +82,29 @@ show heading.where(
   if it.numbering != none{
   block(width: 100%)[
 
-  #line(length: 100%, stroke: 0.6pt + colors.heading-color)
+  #line(length: 100%, stroke: 0.6pt + heading-color)
   #v(0.1cm)
   #set align(left)
   #set text(22pt)
-  #text(colors.heading-color)[Chapter
+  #text(heading-color)[Chapter
   #counter(heading).display(
     "1:" + it.numbering
   )]
 
   #it.body
   #v(-0.5cm)
-  #line(length: 100%, stroke: 0.6pt + colors.heading-color)
+  #line(length: 100%, stroke: 0.6pt + heading-color)
 ]
   }
   else{
     block(width: 100%)[
-      #line(length: 100%, stroke: 0.6pt + colors.heading-color)
+      #line(length: 100%, stroke: 0.6pt + heading-color)
       #v(0.1cm)
       #set align(left)
       #set text(22pt)
       #it.body
       #v(-0.5cm)
-      #line(length: 100%, stroke: 0.6pt + colors.heading-color)
+      #line(length: 100%, stroke: 0.6pt + heading-color)
     ]
   }
 }
@@ -222,9 +224,9 @@ v(1fr)
   }
 v(5fr)
 //title
-line(length: 100%, stroke: colors.cover-color)
+line(length: 100%, stroke: cover-color)
 align(center, text(3em, weight: 700, title))
-line(start: (10%, 0pt), length: 80%, stroke: colors.cover-color)
+line(start: (10%, 0pt), length: 80%, stroke: cover-color)
 v(5fr)
 //author
 align(center, text(1.5em, weight: 500, degree + " Thesis by " + author))

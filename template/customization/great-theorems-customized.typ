@@ -1,7 +1,8 @@
 // packages
-#import "@preview/clean-math-thesis:0.2.0": mathcounter
+//#import "@preview/clean-math-thesis:0.2.0": mathcounter
 #import "@preview/great-theorems:0.1.1": *
 #import "@preview/headcount:0.1.0": *
+#import "../../lib.typ": *
 
 // local
 #import "colors.typ": *

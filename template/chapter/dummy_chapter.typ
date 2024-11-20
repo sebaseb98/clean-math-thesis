@@ -61,8 +61,9 @@ $
 15^2 &= (10 + 5)^2 \
 &= 10^2 + 2 * 10 * 5 + 5^2 \
 &= 100 + 100 + 25 \
-&= 225.
+&= 225. #<result>
 $<eq:multi_line_binom>
+Reference to the multiline equation: @eq:multi_line_binom and one line of.\
 Equations that are not of the same importance can be inline, e.g. $(a + b) (a - b) = a^2 - b^2$ or unlabeled
 $
 (a - b)^2 = a^2 - 2a b + b^2.
@@ -112,3 +113,5 @@ In @table:irrational_numbers we compare some irrational numbers, my favourite on
     [$pi$], table.cell(fill:green)[#calc.round(calc.pi, digits: 2)], 
 )
 )<table:irrational_numbers>
+
+In a final @rem:conclusions we summarize the chapter.
