@@ -36,7 +36,7 @@
   // colors
   cover-color: color1,
   heading-color: color2,
-  link-color: color3,
+  link-color: color3
 )
 // ------------------- content -------------------
 #include "chapter/introduction.typ"

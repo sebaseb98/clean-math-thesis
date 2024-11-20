@@ -31,7 +31,7 @@
   abstract: none,
 
   // colors
-  cover-color: rgb("#800080"), 
+  cover-color: rgb("#800080"),
   heading-color: rgb("#0000ff"),
   link-color: rgb("#000000"),
 
@@ -45,6 +45,8 @@
 // ------------------- settings -------------------
 set heading(numbering: "1.1")  // Heading numbering
 set enum(numbering: "(i)") // Enumerated lists
+show link: set text(fill: link-color)
+show ref: set text(fill: link-color)
 
 // ------------------- Math equation settings -------------------
 
