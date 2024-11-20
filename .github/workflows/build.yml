@@ -1,5 +1,10 @@
 name: Build Typst document
-on: [push, workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -8,30 +13,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Typst
-        uses: lvignoli/typst-action@main
+      - uses: actions/checkout@v4
+      - uses: typst-community/setup-typst@v3
+      - run: typst compile --root . template/main.typ main.pdf
+      - uses: actions/upload-artifact@v4
         with:
-          source_file: template/main.typ
-
-      - name: Upload PDF file
-        uses: actions/upload-artifact@v4
-        with:
-          name: PDFs
-          path: template/main.pdf
-
-      - name: Get current date
-        id: date
-        run: echo "DATE=$(date +%Y-%m-%d-%H:%M)" >> $GITHUB_ENV
-
-      - name: Debug DATE
-        run: echo "DATE is ${{ env.DATE }}"
-
-      - name: Release
-        uses: softprops/action-gh-release@v2
-        if: github.ref_type == 'tag'
-        with:
-          name: "${{ github.ref_name }} — ${{ env.DATE }}"
-          files: main.pdf
+          name: PDF
+          path: main.pdf
