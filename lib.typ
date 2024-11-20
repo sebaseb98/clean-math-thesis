@@ -43,6 +43,7 @@
   body
 ) = {
 // ------------------- settings -------------------
+set document(author: author, title: title)
 set heading(numbering: "1.1")  // Heading numbering
 set enum(numbering: "(i)") // Enumerated lists
 show link: set text(fill: link-color)
