@@ -71,7 +71,7 @@ show: it => {
     it
   }
 }
-set math.equation(numbering: numbering-pattern, supplement: none) if equate-settings != none
+set math.equation(numbering: numbering-pattern) if equate-settings != none
 
 // Reference equations with parentheses (for equate)
 // cf. https://forum.typst.app/t/how-can-i-set-numbering-for-sub-equations/1603/4
