@@ -38,7 +38,7 @@
 
   // equation settings
   equate-settings: none,
-  numbering-pattern: "(1.1)",
+  equation-numbering-pattern: "(1.1)",
 
   // the content of the thesis
   body
@@ -56,7 +56,7 @@ show ref: set text(fill: link-color)
 // i-figured settings
 show math.equation: it => {
   if equate-settings == none {
-    show-equation(prefix: "eq:", only-labeled: true, numbering: numbering-pattern, it)
+    show-equation(prefix: "eq:", only-labeled: true, numbering: equation-numbering-pattern, it)
   } else {
     it
   }
@@ -71,7 +71,7 @@ show: it => {
     it
   }
 }
-set math.equation(numbering: numbering-pattern) if equate-settings != none
+set math.equation(numbering: equation-numbering-pattern) if equate-settings != none
 
 // Reference equations with parentheses (for equate)
 // cf. https://forum.typst.app/t/how-can-i-set-numbering-for-sub-equations/1603/4
