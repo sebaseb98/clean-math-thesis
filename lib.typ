@@ -2,6 +2,7 @@
 #import "@preview/great-theorems:0.1.1": great-theorems-init
 #import "@preview/hydra:0.5.1": hydra
 #import "@preview/equate:0.2.1": equate
+#import "@preview/i-figured:0.2.4": reset-counters, show-equation
 #import "@preview/headcount:0.1.0": reset-counter
 
 #let mathcounter = counter("mathblocks")  // counter for mathblocks
@@ -51,28 +52,49 @@ show ref: set text(fill: link-color)
 
 // ------------------- Math equation settings -------------------
 
-set math.equation(numbering: numbering-pattern) if equate-settings != none
-// only labeled equations get a number
+// either use equate if equate-settings is set or use i-figured if equate-settings is none
+// i-figured settings
 show math.equation: it => {
-  if equate-settings != none {
-    equate(..equate-settings, it)
-  } else if it.has("label"){
-    math.equation(block:true, numbering: numbering-pattern, it)
+  if equate-settings == none {
+    show-equation(prefix: "eq:", only-labeled: true, numbering: numbering-pattern, it)
   } else {
     it
   }
 }
+set math.equation(supplement: none) if equate-settings == none
+
+// equate settings
+show: it => {
+  if equate-settings != none {
+    equate(..equate-settings, it)
+  } else {
+    it
+  }
+}
+set math.equation(numbering: numbering-pattern, supplement: none) if equate-settings != none
+
+// Reference equations with parentheses (for equate)
+// cf. https://forum.typst.app/t/how-can-i-set-numbering-for-sub-equations/1603/4
 show ref: it => {
+  let eq = math.equation
   let el = it.element
-  if equate-settings == none and el != none and el.func() == math.equation {
+  if equate-settings != none and el != none and el.func() == eq {
+    //Normal equation
     link(el.location(), numbering(
-      "(1)",
-      counter(math.equation).at(el.location()).at(0) + 1
+      el.numbering,
+      ..counter(eq).at(el.location())
+    ))
+  } else if equate-settings != none and el != none and el.func() == figure and el.kind == eq {
+    // Equate equations
+    link(el.location(), numbering(
+      el.numbering,
+      ..el.body.value
     ))
   } else {
     it
   }
 }
+
 show math.equation: box  // no line breaks in inline math
 show: great-theorems-init  // show rules for theorems
 
@@ -82,24 +104,23 @@ show heading.where(level: 1): set heading(supplement: [Chapter])
 show heading.where(
   level: 1,
 ): it => {
-  if it.numbering != none{
-  block(width: 100%)[
+  if it.numbering != none {
+    block(width: 100%)[
+      #line(length: 100%, stroke: 0.6pt + heading-color)
+      #v(0.1cm)
+      #set align(left)
+      #set text(22pt)
+      #text(heading-color)[Chapter
+      #counter(heading).display(
+        "1:" + it.numbering
+      )]
 
-  #line(length: 100%, stroke: 0.6pt + heading-color)
-  #v(0.1cm)
-  #set align(left)
-  #set text(22pt)
-  #text(heading-color)[Chapter
-  #counter(heading).display(
-    "1:" + it.numbering
-  )]
-
-  #it.body
-  #v(-0.5cm)
-  #line(length: 100%, stroke: 0.6pt + heading-color)
-]
+      #it.body
+      #v(-0.5cm)
+      #line(length: 100%, stroke: 0.6pt + heading-color)
+    ]
   }
-  else{
+  else {
     block(width: 100%)[
       #line(length: 100%, stroke: 0.6pt + heading-color)
       #v(0.1cm)
@@ -143,7 +164,8 @@ show heading.where(
   linebreak()
 }
 
-show heading: reset-counter(mathcounter, levels: 1)
+show heading: reset-counters // from i-figured
+show heading: reset-counter(mathcounter, levels: 1) // from headcount
 // ------------------- other settings -------------------
 // Settings for Chapter in the outline
 show outline.entry.where(
