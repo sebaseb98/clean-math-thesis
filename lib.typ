@@ -78,20 +78,21 @@ set math.equation(numbering: equation-numbering-pattern) if equate-settings != n
 show ref: it => {
   let eq = math.equation
   let el = it.element
+
+  let is-normal-equation = el != none and el.func() == eq
   let with-subnumbers = equate-settings != none and equate-settings.keys().contains("sub-numbering") and equate-settings.sub-numbering
-  if equate-settings != none and el != none and el.func() == eq {
-    //Normal equation
+  let is-sub-equation = el != none and el.func() == figure and el.kind == eq
+  if equate-settings != none and is-normal-equation {
     link(el.location(), numbering(
       el.numbering,
       ..counter(eq).at(el.location())
     ))
-  } else if equate-settings != none and not with-subnumbers and el != none and el.func() == figure and el.kind == eq {
-    // Equate equations
+  } else if equate-settings != none and not with-subnumbers and is-sub-equation {
     link(el.location(), numbering(
       el.numbering,
       counter(eq).at(el.location()).at(0) - 1
     ))
-  } else if equate-settings != none and el != none and el.func() == figure and el.kind == eq {
+  } else if equate-settings != none and is-sub-equation {
     link(el.location(), numbering(
       el.numbering,
       ..el.body.value
