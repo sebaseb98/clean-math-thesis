@@ -29,7 +29,7 @@
   abstract: include "chapter/abstract.typ",
 
   // equation settings
-  equate-settings: (breakable: true, sub-numbering: false, number-mode: "label"),
+  equate-settings: (breakable: true, sub-numbering: true, number-mode: "label"),
 
   // colors
   cover-color: color1,
