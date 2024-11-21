@@ -170,8 +170,16 @@ show heading.where(
   linebreak()
 }
 
-show heading: reset-counters // from i-figured
-show heading: reset-counter(mathcounter, levels: 1) // from headcount
+// reset counter from i-figured for section-based equation numbering
+show heading: it => {
+  if equate-settings == none {
+    reset-counters(it)
+  } else {
+    it
+  }
+}
+// from headcount for theorems
+show heading: reset-counter(mathcounter, levels: 1)
 // ------------------- other settings -------------------
 // Settings for Chapter in the outline
 show outline.entry.where(
