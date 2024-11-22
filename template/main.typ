@@ -31,7 +31,7 @@
   // equation settings
   equate-settings: (breakable: true, sub-numbering: true, number-mode: "label"),
 	equation-numbering-pattern: "(1.1)",
-	
+
   // colors
   cover-color: color1,
   heading-color: color2,
