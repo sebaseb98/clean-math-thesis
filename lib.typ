@@ -3,13 +3,7 @@
 #import "@preview/hydra:0.5.1": hydra
 #import "@preview/equate:0.2.1": equate
 #import "@preview/i-figured:0.2.4": reset-counters, show-equation
-#import "@preview/rich-counters:0.2.2": rich-counter
 
-// counter for mathblocks
-#let mathcounter = rich-counter(
-  identifier: "mathblocks",
-  inherited_levels: 1
-)
 #let template(
   // personal/subject related stuff
   author: "Stuart Dent",

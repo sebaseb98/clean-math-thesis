@@ -1,9 +1,15 @@
 // packages
-#import "../../lib.typ": mathcounter
 #import "@preview/great-theorems:0.1.1": *
+#import "@preview/rich-counters:0.2.2": rich-counter
 
 // local
 #import "colors.typ": *
+
+// counter for mathblocks
+#let mathcounter = rich-counter(
+  identifier: "mathblocks",
+  inherited_levels: 1
+)
 
 #let my_mathblock = mathblock.with(
   radius: 0.3em,
