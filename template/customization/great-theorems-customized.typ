@@ -1,7 +1,6 @@
 // packages
 #import "../../lib.typ": mathcounter
 #import "@preview/great-theorems:0.1.1": *
-#import "@preview/headcount:0.1.0": *
 
 // local
 #import "colors.typ": *
@@ -10,7 +9,6 @@
   radius: 0.3em,
   inset: 0.8em,
   counter: mathcounter,
-  numbering: dependent-numbering("1.1"),
   breakable: false,
   titlix: title => [(#title):],
 )
