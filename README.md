@@ -8,7 +8,7 @@
 Of course, it can also be used for other subjects, but the following math-specific features are already contained in the template:
 
 - theorems, lemmas, corollaries, proofs etc. prepared using [great-theorems](https://typst.app/universe/package/great-theorems)
-- equation settings (optionally using [equate](https://typst.app/universe/package/equate))
+- equation settings (using either [equate](https://typst.app/universe/package/equate) for numbering of subequations or [i-figured](https://typst.app/universe/package/i-figured/) for equation numbering which includes the chapter number)
 - pseudocode package [lovelace](https://typst.app/universe/package/lovelace) included.
 
 Additionally, it has headers built with [hydra](https://typst.app/universe/package/hydra).
@@ -49,9 +49,9 @@ typst init @preview/clean-math-thesis:0.2.0
 - `abstract`: Content for the abstract section.
 
 <ins>equation settings</ins>
-- `equate-settings`: either none -> no equate use; or tuple with the settings for the equations (see [docs](https://typst.app/universe/package/equate)), e.g. (breakable: true, sub-numbering: true, number-mode: "label")
-- `numbering-pattern`: specify the [numbering](https://typst.app/docs/reference/model/numbering/#parameters-numbering) of the equations. The second counting symbol (e.g. the `a` in `"(1.a)"`) is only used when equate and subnumbering are activated, otherwise it's ignored
-
+- `equate-settings`: either none -> use i-figured; or tuple with the settings for the equations (see [docs](https://typst.app/universe/package/equate)), e.g. (breakable: true, sub-numbering: true, number-mode: "label")
+The switching between these is currently not optimal: i-figured needs a prefix (`eq:`) so if we label an equation like `<equation>` the corresponding reference is `@eq:equation` and for equate we don't have this prefix, i.e. the reference would be `@equation` in this example. This is something to be improved in future releases.
+- `equation-numbering-pattern`: specify the [numbering](https://typst.app/docs/reference/model/numbering/#parameters-numbering) of the equations. The second counting symbol (e.g. the `a` in `"(1.a)"`) is either used for subequation numbering or for the numbering of equations in the chapters.
 <ins>colors</ins>
 - `cover-color`: Color used for the cover.
 - `heading-color`: Color used for headings.
