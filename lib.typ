@@ -302,14 +302,14 @@ pagebreak()
 // ------------------- Tables of ... -------------------
 
 // Table of contents
-outline(depth: 3, indent: 1em, fill: line(length: 100%, stroke: (thickness: 1pt, dash: "loosely-dotted")))
+set outline.entry(fill: line(length: 100%, stroke: (thickness: 1pt, dash: "loosely-dotted")))
+outline(depth: 3, indent: 1em)
 pagebreak()
 
 // List of figures
 outline(
   title: [List of Figures],
-  target: figure.where(kind: image),
-  fill: line(length: 100%, stroke: (thickness: 1pt, dash: "loosely-dotted"))
+  target: figure.where(kind: image)
 )
 pagebreak()
 
@@ -317,8 +317,7 @@ pagebreak()
 // List of Tables
 outline(
   title: [List of Tables],
-  target: figure.where(kind: table),
-  fill: line(length: 100%, stroke: (thickness: 1pt, dash: "loosely-dotted"))
+  target: figure.where(kind: table)
 )
 pagebreak()
 
