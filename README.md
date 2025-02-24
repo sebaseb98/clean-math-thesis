@@ -67,7 +67,7 @@ The switching between these is currently not optimal: i-figured needs a prefix (
 If you want to change an existing typst project structure to use this template, just type the following lines
 
 ```typ
-#import "@preview/clean-math-thesis:0.e.0": template
+#import "@preview/clean-math-thesis:0.3.0": template
 
 #show: template.with(
   // your user specific data, parameters explained above
