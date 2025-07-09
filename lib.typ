@@ -47,6 +47,7 @@ set heading(numbering: "1.1")  // Heading numbering
 set enum(numbering: "(i)") // Enumerated lists
 show link: set text(fill: link-color)
 show ref: set text(fill: link-color)
+set page(numbering: "i'")
 
 // ------------------- Math equation settings -------------------
 
@@ -191,7 +192,11 @@ show figure.where(
   kind: table
 ): set figure.caption(position: top)
 
+
+set page(numbering: "i")
+counter(page).update(1)
 // ------------------- Cover -------------------
+set page(footer: none) // disable footer until the end of contents
 set text(font: cover-font)  // cover font
 
 v(1fr)
@@ -289,14 +294,6 @@ if abstract != none{
 }
 
 
-set page(
-  numbering: "1",
-  number-align: center,
-  header: context {
-    align(center, emph(hydra(1)))
-    v(0.2cm)
-  },
-)  // Page numbering after cover & abstract => they have no page number
 pagebreak()
 
 // ------------------- Tables of ... -------------------
@@ -322,6 +319,18 @@ outline(
 pagebreak()
 
 
+
+// Re-enable page numbering before content
+set page(
+  numbering: "1",
+  number-align: center,
+  header: context {
+    align(center, emph(hydra(1)))
+    v(0.2cm)
+  },
+  footer: auto
+)
+counter(page).update(1)
 
 // ------------------- Content -------------------
 body
