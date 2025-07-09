@@ -4,6 +4,8 @@
 #import "@preview/equate:0.3.1": equate
 #import "@preview/i-figured:0.2.4": reset-counters, show-equation
 
+#import "headings.typ": thesis-heading
+
 #let template(
   // personal/subject related stuff
   author: "Stuart Dent",
@@ -104,70 +106,8 @@ show math.equation: box  // no line breaks in inline math
 show: great-theorems-init  // show rules for theorems
 
 
-// ------------------- Settings for Chapter headings -------------------
-show heading.where(level: 1): set heading(supplement: [Chapter])
-show heading.where(
-  level: 1,
-): it => {
-  if it.numbering != none {
-    block(width: 100%)[
-      #line(length: 100%, stroke: 0.6pt + heading-color)
-      #v(0.1cm)
-      #set align(left)
-      #set text(22pt)
-      #text(heading-color)[Chapter
-      #counter(heading).display(
-        "1:" + it.numbering
-      )]
-
-      #it.body
-      #v(-0.5cm)
-      #line(length: 100%, stroke: 0.6pt + heading-color)
-    ]
-  }
-  else {
-    block(width: 100%)[
-      #line(length: 100%, stroke: 0.6pt + heading-color)
-      #v(0.1cm)
-      #set align(left)
-      #set text(22pt)
-      #it.body
-      #v(-0.5cm)
-      #line(length: 100%, stroke: 0.6pt + heading-color)
-    ]
-  }
-}
-// Automatically insert a page break before each chapter
-show heading.where(
-  level: 1
-): it => {
-  pagebreak(weak: true)
-  it
-}
-// only valid for abstract and declaration
-show heading.where(
-  outlined: false,
-  level: 2
-): it => {
-  set align(center)
-  set text(18pt)
-  it.body
-  v(0.5cm, weak: true)
-}
-// Settings for sub-sub-sub-sections e.g. section 1.1.1.1
-show heading.where(
-  level: 4
-): it => {
-  it.body
-  linebreak()
-}
-// same for level 5 headings
-show heading.where(
-  level: 5
-): it => {
-  it.body
-  linebreak()
-}
+// ------------------- Settings for headings -------------------
+show: it => thesis-heading(heading-color, it)
 
 // reset counter from i-figured for section-based equation numbering
 show heading: it => {
