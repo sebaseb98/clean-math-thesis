@@ -316,22 +316,27 @@ set outline.entry(fill: line(length: 100%, stroke: (thickness: 1pt, dash: "loose
 outline(depth: 3, indent: 1em)
 pagebreak()
 
-// List of figures
-outline(
-  title: [List of Figures],
-  target: figure.where(kind: image)
-)
-pagebreak()
+context {
+  // List of figures
+  let figures = figure.where(kind: image)
+  if query(figures).len() > 0 {
+    outline(
+      title: [List of Figures],
+      target: figures,
+    )
+    pagebreak()
+  }
 
-
-// List of Tables
-outline(
-  title: [List of Tables],
-  target: figure.where(kind: table)
-)
-pagebreak()
-
-
+  // List of Tables
+  let tables = figure.where(kind: table)
+  if query(tables).len() > 0 {
+    outline(
+      title: [List of Tables],
+      target: tables
+    )
+    pagebreak()
+  }
+}
 
 // ------------------- Content -------------------
 body
