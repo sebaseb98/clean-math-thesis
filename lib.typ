@@ -27,6 +27,9 @@
   cover-font: "Libertinus Serif",
 
   // content that needs to be placed differently then normal chapters
+  // frontmatter is put BEFORE the cover page
+  frontmatter: none,
+  // abstract is put AFTER cover, BEFORE outline
   abstract: none,
 
   // colors
@@ -102,6 +105,13 @@ show ref: it => {
 
 show math.equation: box  // no line breaks in inline math
 show: great-theorems-init  // show rules for theorems
+
+// --------------- Frontmatter ---------------
+// before the cover page, usually a university-given cover page
+set text(font: body-font)  // body font
+if frontmatter != none{
+  frontmatter
+}
 
 
 // ------------------- Settings for Chapter headings -------------------
