@@ -45,7 +45,8 @@ typst init @preview/clean-math-thesis:0.3.0
 - `body-font`: Font to be used for the body text.
 - `cover-font`: Font to be used for the cover text.
 
-<ins>content that needs to be placed differently then normal chapters</ins>
+<ins>content that needs to be placed differently than normal chapters</ins>
+- `frontmatter`: Content before the cover page.
 - `abstract`: Content for the abstract section.
 
 <ins>equation settings</ins>
