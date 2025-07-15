@@ -47,7 +47,7 @@ typst init @preview/clean-math-thesis:0.3.0
 
 <ins>content that needs to be placed differently than normal chapters</ins>
 - `frontmatter`: Content before the cover page.
-- `abstract`: Content for the abstract section.
+- `abstract`: Content for the abstract section, placed between the cover page and the outline.
 
 <ins>equation settings</ins>
 - `equate-settings`: either none -> use i-figured; or tuple with the settings for the equations (see [docs](https://typst.app/universe/package/equate)), e.g. (breakable: true, sub-numbering: true, number-mode: "label")
