@@ -4,6 +4,8 @@
 #import "@preview/equate:0.3.1": equate
 #import "@preview/i-figured:0.2.4": reset-counters, show-equation
 
+#import "headings.typ": thesis-heading
+
 #let template(
   // personal/subject related stuff
   author: "Stuart Dent",
@@ -27,6 +29,9 @@
   cover-font: "Libertinus Serif",
 
   // content that needs to be placed differently then normal chapters
+  // frontmatter is put BEFORE the cover page
+  frontmatter: none,
+  // abstract is put AFTER cover, BEFORE outline
   abstract: none,
 
   // colors
@@ -105,70 +110,8 @@ show math.equation: box  // no line breaks in inline math
 show: great-theorems-init  // show rules for theorems
 
 
-// ------------------- Settings for Chapter headings -------------------
-show heading.where(level: 1): set heading(supplement: [Chapter])
-show heading.where(
-  level: 1,
-): it => {
-  if it.numbering != none {
-    block(width: 100%)[
-      #line(length: 100%, stroke: 0.6pt + heading-color)
-      #v(0.1cm)
-      #set align(left)
-      #set text(22pt)
-      #text(heading-color)[Chapter
-      #counter(heading).display(
-        "1:" + it.numbering
-      )]
-
-      #it.body
-      #v(-0.5cm)
-      #line(length: 100%, stroke: 0.6pt + heading-color)
-    ]
-  }
-  else {
-    block(width: 100%)[
-      #line(length: 100%, stroke: 0.6pt + heading-color)
-      #v(0.1cm)
-      #set align(left)
-      #set text(22pt)
-      #it.body
-      #v(-0.5cm)
-      #line(length: 100%, stroke: 0.6pt + heading-color)
-    ]
-  }
-}
-// Automatically insert a page break before each chapter
-show heading.where(
-  level: 1
-): it => {
-  pagebreak(weak: true)
-  it
-}
-// only valid for abstract and declaration
-show heading.where(
-  outlined: false,
-  level: 2
-): it => {
-  set align(center)
-  set text(18pt)
-  it.body
-  v(0.5cm, weak: true)
-}
-// Settings for sub-sub-sub-sections e.g. section 1.1.1.1
-show heading.where(
-  level: 4
-): it => {
-  it.body
-  linebreak()
-}
-// same for level 5 headings
-show heading.where(
-  level: 5
-): it => {
-  it.body
-  linebreak()
-}
+// ------------------- Settings for headings -------------------
+show: it => thesis-heading(heading-color, it)
 
 // reset counter from i-figured for section-based equation numbering
 show heading: it => {
@@ -195,6 +138,15 @@ show figure.where(
 
 set page(numbering: "i")
 counter(page).update(1)
+// --------------- Frontmatter ---------------
+// before the cover page, usually a university-given cover page
+set text(font: body-font)  // body font
+if frontmatter != none {
+  frontmatter
+  pagebreak(weak: true) // page break before cover
+}
+
+
 // ------------------- Cover -------------------
 set page(footer: none) // disable footer until the end of contents
 set text(font: cover-font)  // cover font
@@ -287,6 +239,80 @@ align(center, text(1.3em, weight: 100, deadline-text))
 align(center + bottom, text(1.3em, weight: 100, " supervised by" + linebreak() + supervisor1 + linebreak() +  supervisor2))
 pagebreak()
 
+// ------------------- Settings for Chapter headings -------------------
+show heading.where(level: 1): set heading(supplement: [Chapter])
+show heading.where(
+  level: 1,
+): it => {
+  if it.numbering != none {
+    block(width: 100%)[
+      #line(length: 100%, stroke: 0.6pt + heading-color)
+      #v(0.1cm)
+      #set align(left)
+      #set text(22pt)
+      #text(heading-color)[Chapter
+      #counter(heading).display(
+        "1:" + it.numbering
+      )]
+
+      #it.body
+      #v(-0.5cm)
+      #line(length: 100%, stroke: 0.6pt + heading-color)
+    ]
+  }
+  else {
+    block(width: 100%)[
+      #line(length: 100%, stroke: 0.6pt + heading-color)
+      #v(0.1cm)
+      #set align(left)
+      #set text(22pt)
+      #it.body
+      #v(-0.5cm)
+      #line(length: 100%, stroke: 0.6pt + heading-color)
+    ]
+  }
+}
+// Automatically insert a page break before each chapter
+show heading.where(
+  level: 1
+): it => {
+  pagebreak(weak: true)
+  it
+}
+// only valid for abstract and declaration
+show heading.where(
+  outlined: false,
+  level: 2
+): it => {
+  set align(center)
+  set text(18pt)
+  it.body
+  v(0.5cm, weak: true)
+}
+// Settings for sub-sub-sub-sections e.g. section 1.1.1.1
+show heading.where(
+  level: 4
+): it => {
+  it.body
+  linebreak()
+}
+// same for level 5 headings
+show heading.where(
+  level: 5
+): it => {
+  it.body
+  linebreak()
+}
+
+// reset counter from i-figured for section-based equation numbering
+show heading: it => {
+  if equate-settings == none {
+    reset-counters(it)
+  } else {
+    it
+  }
+}
+
 // ------------------- Abstract -------------------
 set text(font: body-font)  // body font
 if abstract != none{
@@ -303,22 +329,27 @@ set outline.entry(fill: line(length: 100%, stroke: (thickness: 1pt, dash: "loose
 outline(depth: 3, indent: 1em)
 pagebreak()
 
-// List of figures
-outline(
-  title: [List of Figures],
-  target: figure.where(kind: image)
-)
-pagebreak()
+context {
+  // List of figures
+  let figures = figure.where(kind: image)
+  if query(figures).len() > 0 {
+    outline(
+      title: [List of Figures],
+      target: figures,
+    )
+    pagebreak()
+  }
 
-
-// List of Tables
-outline(
-  title: [List of Tables],
-  target: figure.where(kind: table)
-)
-pagebreak()
-
-
+  // List of Tables
+  let tables = figure.where(kind: table)
+  if query(tables).len() > 0 {
+    outline(
+      title: [List of Tables],
+      target: tables
+    )
+    pagebreak()
+  }
+}
 
 // Re-enable page numbering before content
 set page(
