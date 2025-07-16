@@ -135,9 +135,6 @@ show figure.where(
   kind: table
 ): set figure.caption(position: top)
 
-
-set page(numbering: "i")
-counter(page).update(1)
 // --------------- Frontmatter ---------------
 // before the cover page, usually a university-given cover page
 set text(font: body-font)  // body font
@@ -146,6 +143,9 @@ if frontmatter != none {
   pagebreak(weak: true) // page break before cover
 }
 
+// Update numbering
+set page(numbering: "i")
+counter(page).update(1)
 
 // ------------------- Cover -------------------
 set page(footer: none) // disable footer until the end of contents
