@@ -4,6 +4,8 @@
 #import "@preview/equate:0.3.1": equate
 #import "@preview/i-figured:0.2.4": reset-counters, show-equation
 
+#import "headings.typ": thesis-heading
+
 #let template(
   // personal/subject related stuff
   author: "Stuart Dent",
@@ -106,6 +108,18 @@ show ref: it => {
 show math.equation: box  // no line breaks in inline math
 show: great-theorems-init  // show rules for theorems
 
+
+// ------------------- Settings for headings -------------------
+show: it => thesis-heading(heading-color, it)
+
+// reset counter from i-figured for section-based equation numbering
+show heading: it => {
+  if equate-settings == none {
+    reset-counters(it)
+  } else {
+    it
+  }
+}
 // ------------------- other settings -------------------
 // Settings for Chapter in the outline
 show outline.entry.where(
