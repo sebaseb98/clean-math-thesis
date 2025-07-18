@@ -1,7 +1,7 @@
 // global
 #import "@preview/great-theorems:0.1.2": great-theorems-init
-#import "@preview/hydra:0.5.2": hydra
-#import "@preview/equate:0.3.1": equate
+#import "@preview/hydra:0.6.1": hydra
+#import "@preview/equate:0.3.2": equate
 #import "@preview/i-figured:0.2.4": reset-counters, show-equation
 
 #import "headings.typ": thesis-heading
