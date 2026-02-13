@@ -242,12 +242,11 @@ show heading: it => {
 
 // ------------------- Abstract -------------------
 set text(font: body-font)  // body font
-if abstract != none{
+
+if abstract != none {
   abstract
+  pagebreak()
 }
-
-
-pagebreak()
 
 // ------------------- Tables of ... -------------------
 
