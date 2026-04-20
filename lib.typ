@@ -109,20 +109,20 @@ show ref: it => {
 }
 
 show math.equation.where(block: false): x => {
-    if equation-box-inline {
-      box(x) // no line breaks in inline math
-    } else {
-      x
-    }
+  if equation-box-inline {
+    box(x) // no line breaks in inline math
+  } else {
+    x
   }
-  show math.equation.where(block: true): x => {
-    if equation-box-block {
-      box(x)
-    } else {
-      x
-    }
+}
+show math.equation.where(block: true): x => {
+  if equation-box-block {
+    box(x)
+  } else {
+    x
   }
-  show: great-theorems-init  // show rules for theorems
+}
+show: great-theorems-init  // show rules for theorems
 
 
 // ------------------- other settings -------------------
