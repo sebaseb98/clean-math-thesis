@@ -43,6 +43,8 @@
   equate-settings: none,
   equation-numbering-pattern: "(1.1)",
 
+  equation-box-inline: true,
+  equation-box-block: false,
   // the content of the thesis
   body
 ) = {
@@ -106,7 +108,20 @@ show ref: it => {
   }
 }
 
-show math.equation: box  // no line breaks in inline math
+show math.equation.where(block: false): x => {
+  if equation-box-inline {
+    box(x) // no line breaks in inline math
+  } else {
+    x
+  }
+}
+show math.equation.where(block: true): x => {
+  if equation-box-block {
+    box(x)
+  } else {
+    x
+  }
+}
 show: great-theorems-init  // show rules for theorems
 
 

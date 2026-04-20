@@ -54,6 +54,9 @@ typst init @preview/clean-math-thesis:0.4.0
 - `equate-settings`: either none -> use i-figured; or tuple with the settings for the equations (see [docs](https://typst.app/universe/package/equate)), e.g. (breakable: true, sub-numbering: true, number-mode: "label")
 The switching between these is currently not optimal: i-figured needs a prefix (`eq:`) so if we label an equation like `<equation>` the corresponding reference is `@eq:equation` and for equate we don't have this prefix, i.e. the reference would be `@equation` in this example. This is something to be improved in future releases.
 - `equation-numbering-pattern`: specify the [numbering](https://typst.app/docs/reference/model/numbering/#parameters-numbering) of the equations. The second counting symbol (e.g. the `a` in `"(1.a)"`) is either used for subequation numbering or for the numbering of equations in the chapters.
+- `equation-box-inline`: Whether inline equations are wrapped in boxes. Default is `true`.
+- `equation-box-block`: Whether block equations are wrapped in boxes. Default is `false`.
+
 <ins>colors</ins>
 - `cover-color`: Color used for the cover.
 - `heading-color`: Color used for headings.
